@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "./card";
-import chroma from 'chroma-js';
+import chroma from "chroma-js";
 import { getPokemon } from "../Api/pokeapi";
 import ReactPaginate from "react-paginate";
 import { typeData } from "./collectionTypes";
@@ -10,6 +10,9 @@ import PokemonModal from "./pokemonModal";
 import "./styles/dashboard.css";
 
 function Dashboard() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedType, setSelectedType] = useState("Todos los tipos");
   const [pokemonList, setPokemonList] = useState([]);
@@ -21,12 +24,15 @@ function Dashboard() {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
+    setIsLoading(true);
     getPokemon()
       .then((data) => {
         setPokemonList(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error al obtener la lista de Pokémon", error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -81,19 +87,32 @@ function Dashboard() {
       <h2>Lista de Pokémon</h2>
 
       <div>
-        <button className="typeFilter-button"
-       style={{backgroundColor: selectedType === "Todos los tipos" ? "#A8A878" : chroma(typeData[selectedType].color).brighten(-0.6).css()}}  
-        onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button
+          className="typeFilter-button"
+          style={{
+            backgroundColor:
+              selectedType === "Todos los tipos"
+                ? "#A8A878"
+                : chroma(typeData[selectedType].color).brighten(-0.6).css(),
+          }}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
           <span className="iconBotton">
-            {selectedType} 
-            <PokemonTypeIcon type={selectedType} iconsize={"1x"}/>
+            {selectedType}
+            <PokemonTypeIcon type={selectedType} iconsize={"1x"} />
           </span>
         </button>
 
         {isMenuOpen && (
-          <div className={`typeFilter-container ${isMenuOpen ? "open" : ""}`}
-          style={{backgroundColor: selectedType === "Todos los tipos" ? "#A8A878" : chroma(typeData[selectedType].color).brighten(1.3).css()}}  
-        >
+          <div
+            className={`typeFilter-container ${isMenuOpen ? "open" : ""}`}
+            style={{
+              backgroundColor:
+                selectedType === "Todos los tipos"
+                  ? "#A8A878"
+                  : chroma(typeData[selectedType].color).brighten(1.3).css(),
+            }}
+          >
             <span className="typeIcon" onClick={() => handleTypeFilter("")}>
               Todos los tipos
             </span>
@@ -112,23 +131,32 @@ function Dashboard() {
       </div>
 
       <div className="dashboard-widgets">
-        {displayedPokemon.map((pokemon, index) => (
-          <Card
-            key={index}
-            title={pokemon.name}
-            onClick={() => handlePokemonClick(pokemon)}
-          />
-        ))}
+        {isLoading ? (
+          <div className="chargeImg">
+            <img src="/images/pikachiball.gif" alt="Cargando..." />
+            <h4>Cargando...</h4>
+          </div>
+        ) : (
+          displayedPokemon.map((pokemon, index) => (
+            <Card
+              key={index}
+              title={pokemon.name}
+              onClick={() => handlePokemonClick(pokemon)}
+            />
+          ))
+        )}
       </div>
 
-      <ReactPaginate
-        pageCount={pageCount}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={1}
-        onPageChange={handlePageChange}
-        containerClassName="pagination"
-        activeClassName="active"
-      />
+      {!isLoading && (
+        <ReactPaginate
+          pageCount={pageCount}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          onPageChange={handlePageChange}
+          containerClassName="pagination"
+          activeClassName="active"
+        />
+      )}
 
       {selectedPokemon && (
         <PokemonModal
