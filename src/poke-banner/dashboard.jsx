@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
 import { Card } from "./card";
 import chroma from "chroma-js";
 import { getPokemon } from "../Api/pokeapi";
@@ -10,11 +11,9 @@ import PokemonModal from "./pokemonModal";
 import "./styles/dashboard.css";
 
 function Dashboard() {
-
   const [isLoading, setIsLoading] = useState(true);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState("Todos los tipos");
+  const [error, setError] = useState(null);
+  const [selectedType, setSelectedType] = useState("todos");
   const [pokemonList, setPokemonList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -22,6 +21,7 @@ function Dashboard() {
   const perPage = 24;
 
   const [filter, setFilter] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -51,19 +51,33 @@ function Dashboard() {
 
   const handleTypeFilter = (type) => {
     setTypeFilter(type);
-    setSelectedType(type || "Todos los tipos");
-    setIsMenuOpen(false);
+    setSelectedType(type || "todos");
+  };
+
+  const handleButtonClick = () => {
+    const pokemonFound = pokemonList.find(
+      (pokemon) => pokemon.name.toLowerCase() === inputValue.toLowerCase()
+    );
+
+    if (pokemonFound) {
+      setFilter(inputValue);
+      setError(null);
+    } else {
+      setError("No se encontraron resultados para tu búsqueda.");
+    }
+    setInputValue("");
   };
 
   const filteredPokemon = pokemonList.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const filteredByType = typeFilter
-    ? filteredPokemon.filter((pokemon) =>
-        pokemon.types.some((type) => type.type.name === typeFilter)
-      )
-    : filteredPokemon;
+  const filteredByType =
+    typeFilter && typeFilter !== "pokeball"
+      ? filteredPokemon.filter((pokemon) =>
+          pokemon.types.some((type) => type.type.name === typeFilter)
+        )
+      : filteredPokemon;
 
   const totalFilteredPokemon =
     filter || typeFilter ? filteredByType : pokemonList;
@@ -77,60 +91,40 @@ function Dashboard() {
 
   return (
     <div>
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Filtrar Pokémon por nombre"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-      />
-      <h2>Lista de Pokémon</h2>
-
-      <div>
-        <button
-          className="typeFilter-button"
-          style={{
-            backgroundColor:
-              selectedType === "Todos los tipos"
-                ? "#A8A878"
-                : chroma(typeData[selectedType].color).brighten(-0.6).css(),
-          }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <span className="iconBotton">
-            {selectedType}
-            <PokemonTypeIcon type={selectedType} iconsize={"1x"} />
-          </span>
+      <div key="search-input">
+        <button className="search-input-btn" onClick={handleButtonClick}>
+          Buscar
         </button>
-
-        {isMenuOpen && (
-          <div
-            className={`typeFilter-container ${isMenuOpen ? "open" : ""}`}
-            style={{
-              backgroundColor:
-                selectedType === "Todos los tipos"
-                  ? "#A8A878"
-                  : chroma(typeData[selectedType].color).brighten(1.3).css(),
-            }}
-          >
-            <span className="typeIcon" onClick={() => handleTypeFilter("")}>
-              Todos los tipos
-            </span>
-            {Object.keys(typeData).map((typeName) => (
-              <span
-                key={typeName}
-                className="typeIcon"
-                onClick={() => handleTypeFilter(typeName)}
-              >
-                {typeName}
-                <PokemonTypeIcon type={typeName} iconsize={"1x"} />
-              </span>
-            ))}
-          </div>
-        )}
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Filtrar Pokémon por nombre"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
       </div>
 
-      <div className="dashboard-widgets">
+      <div
+        key="types-bar"
+        className={`types-Bar`}
+        style={{
+          backgroundColor:
+            selectedType === "todos"
+              ? "#ddd"
+              : chroma(typeData[selectedType].color).brighten(1.3).css(),
+        }}
+      >
+        {Object.keys(typeData).map((typeName) => (
+          <PokemonTypeIcon
+            key={typeName}
+            type={typeName}
+            onClick={() => handleTypeFilter(typeName)}
+          />
+        ))}
+      </div>
+
+      <h2>Lista de Pokémon</h2>
+      <div key="pokemon-list" className="dashboard-widgets">
         {isLoading ? (
           <div className="chargeImg">
             <img src="/images/pikachiball.gif" alt="Cargando..." />
@@ -164,6 +158,20 @@ function Dashboard() {
           closeModal={closeModal}
         />
       )}
+
+      <Modal
+        isOpen={!!error}
+        onRequestClose={() => setError(null)}
+        className="ErrorModal"
+        overlayClassName="ErrorModal-overlay"
+      >
+        <div>
+          <h2>Error</h2>
+          <p>{error}</p>
+          <button onClick={() => setError(false)}>Cerrar</button>
+        </div>
+        <div  className="error-bg" ></div>
+      </Modal>
     </div>
   );
 }

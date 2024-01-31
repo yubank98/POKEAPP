@@ -25,6 +25,7 @@ const PokemonModal = ({ selectedPokemon, closeModal }) => {
             }`,
           }}
         >
+
           <h2 className="name">{selectedPokemon.name}</h2>
           <img
             src={`https://img.pokemondb.net/artwork/large/${selectedPokemon.name}.jpg`}

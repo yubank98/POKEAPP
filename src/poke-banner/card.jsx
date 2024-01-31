@@ -44,12 +44,14 @@ export function Card({ title, onClick }) {
 
   return (
     <div className="pokeCard" style={{ background: `linear-gradient(to top, #fff, ${color.secondaryColor})`}} onClick={onClick}>
+      <div className="pokeCard-bg"></div>
       <img
         src={content.image}
         alt={`${title}`}
         className="pokeCard-image"
       />
       <div className="pokemon-name">
+        
         {content.types.map((type, index) => (
           <PokemonTypeIcon className="icon" key={index} type={type} />
         ))}
