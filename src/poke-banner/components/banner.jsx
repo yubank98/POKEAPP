@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/banner.css'; // Importa tu archivo de estilos CSS
+import '../styles/banner.css'; // Importa tu archivo de estilos CSS
 
 const images = [
   '/images/img-1.avif',

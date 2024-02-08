@@ -1,0 +1,49 @@
+.category {
+  padding: 0 1vw 0 0;
+  font-weight: 500;
+  color: #3d3d40;
+  text-transform: capitalize;
+}
+
+.stats-number {
+  font-size: 10px;
+  color: #3d3d40;
+}
+
+.range-slide {
+  width: 70%;
+  padding: 10px;
+}
+
+.range-slide-fill {
+  position: relative;
+  height: 5px;
+  border-radius: 10px;
+  width: var(--percentage);
+}
+
+.range-slide-fill::after {
+    width: 100%;
+    border-spacing: 0 1.1vh;
+}
+
+
+.range-slide .pokeball { background: #0088ff; }
+.range-slide .normal { background: #ffff00; }
+.range-slide .fire { background: #ff6a00; }
+.range-slide .water { background: #004cff; }
+.range-slide .electric { background: #F8D030; }
+.range-slide .grass { background: #55ff00; }
+.range-slide .ice { background: #36eeee; }
+.range-slide .fighting { background: #C03028; }
+.range-slide .poison { background: #ff02ff; }
+.range-slide .ground { background: #ffbb00; }
+.range-slide .flying { background: #A890F0; }
+.range-slide .psychic { background: #F85888; }
+.range-slide .bug { background: #e5ff00; }
+.range-slide .rock { background: #B8A038; }
+.range-slide .ghost { background: #705898; }
+.range-slide .dark { background: #705848; }
+.range-slide .steel { background: #4545dd; }
+.range-slide .dragon { background: #ff0037; }
+.range-slide .fairy { background: #ff0080; }

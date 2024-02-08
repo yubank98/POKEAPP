@@ -1,0 +1,65 @@
+.types-Bar {
+    display: inline-flex;
+    width: auto;
+    padding: 15px 2vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px 30px 10px;
+    background: #eef5fd;
+    border-radius: 40px;
+    box-shadow: 0 0 10px 5px #d1d1d1;
+}
+
+.typeIcon {
+  display: flex;
+  margin-left: 2px;
+  margin-right: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.Img-type {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  padding: 0.7vw;
+  cursor: pointer;
+  border-radius: 100%;
+  background: currentColor;
+}
+
+.Img-type:hover {
+  transform: scale(1.2);
+}
+
+.Img-type img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.types-Bar .pokeball { background: #5698D1; }
+.types-Bar .normal { background: #A8A878; }
+.types-Bar .fire { background: #F08030; }
+.types-Bar .water { background: #6890F0; }
+.types-Bar .electric { background: #F8D030; }
+.types-Bar .grass { background: #78C850; }
+.types-Bar .ice { background: #98D8D8; }
+.types-Bar .fighting { background: #C03028; }
+.types-Bar .poison { background: #A040A0; }
+.types-Bar .ground { background: #E0C068; }
+.types-Bar .flying { background: #A890F0; }
+.types-Bar .psychic { background: #F85888; }
+.types-Bar .bug { background: #A8B820; }
+.types-Bar .rock { background: #B8A038; }
+.types-Bar .ghost { background: #705898; }
+.types-Bar .dark { background: #705848; }
+.types-Bar .steel { background: #B8B8D0; }
+.types-Bar .dragon { background: #EE99AC; }
+.types-Bar .fairy { background: #D685AD; }
