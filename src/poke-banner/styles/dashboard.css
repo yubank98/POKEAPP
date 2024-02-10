@@ -9,177 +9,13 @@
 }
 
 .dashboard-widgets {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-top: 5%;
   margin-bottom: 5%;
-  gap: 20px;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  gap: 30px;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 50px;
 }
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  max-width: auto;
-  max-height: auto;
-  overflow-y: auto;
-  padding: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-image {
-  width: 500px;
-  height: 400px;
-  object-fit: contain;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
-  background-color: #fff;
-  margin-top: 50px;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.modal-icon {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  padding: 1px;
-  cursor: pointer;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.modal-icon Img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2px;
-  margin-bottom: 10px;
-  width: 70%;
-  height: 80%;
-}
-
-.name {
-  position: absolute;
-  top: 5px;
-  margin-left: 0px;
-}
-
-.description {
-  bottom: 13px;
-  display: flex;
-  align-items: center;
-  border-radius: 34px;
-  width: 500px;
-  height: 6vh;
-  margin-top: 10px;
-  overflow: hidden;
-}
-
-.description h3 {
-  margin-left: 10px;
-  font-size: 12px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-style: italic;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.typeIcon {
-  display: flex;
-  margin-left: 2px;
-  margin-right: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.iconBotton {
-  margin-left: 25%;
-  margin-right: 25%;
-  display: flex;
-  font-size: 15px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.typeFilter-button {
-  height: 40px;
-  width: 170px;
-  border-radius: 5px;
-  margin-top: 10px;
-  border: 2px solid #ddd;
-  color: #ddd;
-  justify-content: center;
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.stats {
-  width: 500px;
-  display: row;
-  margin-top: 10px;
-  overflow: hidden;
-  margin-bottom: 10px;
-  bottom: 13px;
-  border-radius: 20px;
-}
-
-.stats h3 {
-  margin-left: 10px;
-  font-size: 12px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.info-stats {
-  margin-bottom: 10px;
-  display: flex;
-  margin-left: 10px;
-  bottom: 49px;
-  margin-left: 13px;
-  margin-right: 13px;
-  font-size: 12px;
-  color: #ddd;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.data-stats {
-  border-radius: 34px;
-  padding: 7px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  font-size: 12px;
-  overflow: hidden;
-  color: #000000;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-
-
-
 
 .chargeImg {
   width: 100%;
@@ -220,7 +56,7 @@
 
 /*# styles responsive  */
 
-@media (max-width: 1080px) {
+@media (max-width: 720px) {
  
   .dashboard-widgets {
     display: grid;
@@ -230,88 +66,26 @@
     margin-right: 10px;
   }
 
-  .modal {
-    max-width: 100%;
-    max-height: 100%;
-    top: 50%;
-    left: 50%;
-  }
-
-  .modal-image {
-    width: 260px;
-    height: 200px;
-  }
-
-  .description,
-  .stats {
-    width: 100%;
-  }
-
-  .name h2 {
-    font-size: 24px;
-  }
-
-  .description h3,
-  .stats h3,
-  .info-stats,
-  .data-stats {
-    font-size: 10px;
-  }
-
-  .typeIcon {
-    flex: 0 0 calc(50% - 10px);
-  }
-
-  .chargeImg img {
-    width: 50%;
-  }
-}
-
-.info-stats table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 
 @media (max-width: 480px) {
 
+  .dashboard {
+    gap: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   .dashboard-widgets {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 2fr));
     gap: 20px;
-    margin-right: 10px;
     margin-left: 10px;
+    margin-right: 20px;
   }
 
-  .modal {
-    max-width: 100%;
-    max-height: 100%;
-  }
+  
 
-  .modal-image {
-    width: 94%;
-    height: 250px;
-  }
-
-  .description,
-  .stats {
-    width: 100%;
-  }
-
-  .name h2 {
-    font-size: 20px;
-  }
-
-  .description h3,
-  .stats h3,
-  .info-stats,
-  .data-stats {
-    font-size: 8px;
-  }
-
-  .typeIcon {
-    flex: 0 0 calc(100% - 10px);
-  }
+  
 }

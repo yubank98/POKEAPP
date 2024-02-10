@@ -4,7 +4,7 @@ import { usePokemonModal } from "../context/pokeModalProv";
 import * as Dialog from "@radix-ui/react-dialog";
 import DataRow from "./dataRow";
 
-import { formatStats, getTypeIcon , ArtImagUrl } from "../../utils/poke-helpers";
+import { formatStats, getTypeIcon } from "../../utils/poke-helpers";
 
 import "../styles/card.css";
 
@@ -15,17 +15,18 @@ const PokemonModal = () => {
   }
 
   const stats = formatStats(currentPokemon.stats);
-  const pokeImg = ArtImagUrl(currentPokemon.name);
 
   return (
     <Dialog.Root
       open={isModalOpen}
       onOpenChange={(isOpen) => !isOpen && closeModal()}
     >
+
       <Dialog.Portal>
+        <Dialog.Overlay className="overlay" />
         <Dialog.Content
           data-content={currentPokemon?.name}
-          className="modal"
+          className={`modal ${isModalOpen ? '' : 'exit'}`}
           style={{
             backgroundImage: `linear-gradient(${
               typeData[currentPokemon.types[0].name].color
@@ -36,10 +37,13 @@ const PokemonModal = () => {
             }`,
           }}
         >
-          <div className="cardInfo-container">
-            <h2 className="name">{currentPokemon.name}</h2>
+          <div className="cardInfo">
+            <span className="name">
+                N°{currentPokemon.paddedId} {currentPokemon.name}
+            </span>
+
             <img
-              src={`${ pokeImg || currentPokemon.imgSrc}`}
+              src={`${currentPokemon.imgSrc}`}
               alt={`${currentPokemon.name}`}
               className="modal-image"
               style={{
@@ -57,11 +61,10 @@ const PokemonModal = () => {
                 }, #fff)`,
               }}
             >
-              <h3>N°{currentPokemon.paddedId}</h3>
               <h3> Altura: {currentPokemon.height}</h3>
               <h3>Peso: {currentPokemon.weight}</h3>
               <h3>Tipos: </h3>
-              <h3 className="cardIcon">
+              <span className="icon">
                 {currentPokemon.types.map(({ name }) => {
                   const typeImg = getTypeIcon(name);
                   return (
@@ -70,7 +73,7 @@ const PokemonModal = () => {
                     </div>
                   );
                 })}
-              </h3>
+              </span>
             </div>
             <div
               className="stats"
@@ -83,22 +86,22 @@ const PokemonModal = () => {
               <h3>Stats</h3>
 
               <div className="info-stats">
-                    <table>
-                      <tbody>
-                        {stats.map((stat) => {
-                          const { name, value, max } = stat;
-                          return (
-                            <DataRow
-                              key={name}
-                              category={name}
-                              value={value}
-                              max={max}
-                              type={currentPokemon.types[0].name}
-                            />
-                          );
-                        })}
-                      </tbody>
-                    </table>
+                <table>
+                  <tbody>
+                    {stats.map((stat) => {
+                      const { name, value, max } = stat;
+                      return (
+                        <DataRow
+                          key={name}
+                          category={name}
+                          value={value}
+                          max={max}
+                          type={currentPokemon.types[0].name}
+                        />
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

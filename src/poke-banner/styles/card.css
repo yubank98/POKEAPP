@@ -69,6 +69,21 @@
   max-height: 200px;
   margin-top: -35%;
   margin-bottom: 20px;
+
+
+  animation: blurIn 0.5s ease-in-out;
+
+}
+
+@keyframes blurIn {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 .pokemon-number {
@@ -264,23 +279,34 @@
 
 @media screen and (max-width: 480px) {
   .pokeCard {
-    width: 80%;
-    height: auto;
-    padding: 10px;
+    width: auto;
+    height: 150px;
+    padding: 3px;
     font-size: 12px;
   }
+
   .pokeCard-image {
     height: auto;
     max-width: 100%;
     margin-top: -10%;
   }
 
+  .pokemon-info {
+    margin-top: 2px;
+    display: inline-block;
+  }
+
+  .pokemon-info > span {
+    font-size: 0.8rem;
+    padding: 2px;
+  }
+
   .pokemon-number {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .pokemon-name {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .cardIcon div > img {
@@ -293,6 +319,6 @@
   }
 
   .cardIcon div > span {
-    font-size: 1rem;
+    font-size:0.9rem;
   }
 }

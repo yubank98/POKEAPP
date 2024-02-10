@@ -1,20 +1,21 @@
 /* Estilos para la barra de navegación (NavBar) */
-
 .navbar {
   background-color: var(--olivine-100);
-  color: var(--olivine-100);
-  padding: 2px 0;
+  padding: 1px 0;
+  top: 0;
+  left: 0;
 }
 
 .nav-list {
   list-style: none;
-  padding: 0;
   display: flex;
   justify-content: space-around;
+  margin-left: 2px;
+  padding: 0;
 }
 
 .nav-item {
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .nav-item a {
@@ -25,4 +26,17 @@
 
 .nav-item a:hover {
   border-bottom: 2px solid var(--olivine-900);
+}
+
+
+@media (max-width: 768px) {
+  .nav-list {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
 }

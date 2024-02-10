@@ -16,7 +16,7 @@ export const Card = ({
       <div className="pokeCard-bg"></div>
       <img src={imgSrc} alt={name} className="pokeCard-image" />
       <div className="pokemon-info">
-        <span className="pokemon-number">{"#" + paddedId}</span>
+        <span className="pokemon-number">{"#" + paddedId + " "}</span>
         <span className="pokemon-name">{name}</span>
         <span className="cardIcon">
           {types.map(({ name }) => {

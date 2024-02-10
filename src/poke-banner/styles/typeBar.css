@@ -1,12 +1,13 @@
 .types-Bar {
     display: inline-flex;
-    width: auto;
-    padding: 15px 2vw;
+    padding: 10px 1vw;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 10px 10px 30px 10px;
-    background: #eef5fd;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 20px;
+    background: #d2e6fc;
     border-radius: 40px;
     box-shadow: 0 0 10px 5px #d1d1d1;
 }
@@ -44,7 +45,6 @@
   height: 100%;
 }
 
-.types-Bar .pokeball { background: #5698D1; }
 .types-Bar .normal { background: #A8A878; }
 .types-Bar .fire { background: #F08030; }
 .types-Bar .water { background: #6890F0; }
@@ -63,3 +63,41 @@
 .types-Bar .steel { background: #B8B8D0; }
 .types-Bar .dragon { background: #EE99AC; }
 .types-Bar .fairy { background: #D685AD; }
+
+@media (max-width: 768px) {
+  .types-Bar {
+    padding: 20px 2vw;
+  }
+  .Img-type {
+    width: 30px;
+    height: 30px;
+    padding: 0.7vw;
+    margin-top: 5px;
+  }
+
+  .Img-type img {
+    width: auto;
+    height: 60%;
+    margin-top: 5px;
+  }
+}
+
+
+@media screen and (max-width: 430px){
+  .types-Bar {
+    padding: 10px 1.5vw;
+  }
+  .Img-type {
+    width: 20px;
+    height: 20px;
+    padding: 0.4vw;
+    margin-top: 4px;
+  }
+
+  .Img-type img {
+    width: auto;
+    height: 50%;
+    margin-top: 4px;
+  }
+  
+}

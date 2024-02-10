@@ -1,3 +1,16 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+#root, .App { /* Asegúrate de que estos selectores coinciden con el id o la clase de tu contenedor principal */
+  min-height: 100%;
+  width: 100%;
+}
+
 .App {
   text-align: center;
 }

@@ -3,7 +3,7 @@ import { apiFetch } from "../utils/pokeapi";
 
 export const useTypes = () => {
     const { data } = useQuery({
-        queryKey: 'types',
+        queryKey: ['types'],
         queryFn: async () => {
             const { results } = await apiFetch('/type');
 

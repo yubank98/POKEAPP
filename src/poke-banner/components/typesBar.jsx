@@ -1,8 +1,6 @@
 import React from "react";
 import { useTypes } from "../../hooks/usetypes";
 import { getTypeIcon } from "../../utils/poke-helpers";
-import { typeData } from "../../utils/collectionTypes";
-import chroma from "chroma-js";
 import "../styles/typeBar.css";
 
 const TypeBar = ({ toggleTypes }) => {
@@ -12,6 +10,7 @@ const TypeBar = ({ toggleTypes }) => {
     <div className="types-Bar">
       {types.map((type) => (
         <span
+          key={type.name}
           className={`Img-type ${type.name}`}
           onClick={() => toggleTypes(type.name)}
         >
