@@ -17,5 +17,5 @@ export  const typeData = {
     dark: { icon: 'dark', color: '#705848' },
     steel: { icon: 'steel', color: '#B8B8D0' },
     dragon: { icon: 'dragon', color: '#EE99AC' },
-    fairy: { icon: 'fairy', color: '#D685AD' },
+    fairy: { icon: 'fairy', color: '#D685AD' }
   };
