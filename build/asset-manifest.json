@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.2744dd5a.css",
-    "main.js": "/static/js/main.1623b782.js",
+    "main.js": "/static/js/main.ad6657b6.js",
     "static/media/pokeball-transparent.svg": "/static/media/pokeball-transparent.0a48c5e2a6ec75841248.svg",
     "index.html": "/index.html",
     "main.2744dd5a.css.map": "/static/css/main.2744dd5a.css.map",
-    "main.1623b782.js.map": "/static/js/main.1623b782.js.map"
+    "main.ad6657b6.js.map": "/static/js/main.ad6657b6.js.map"
   },
   "entrypoints": [
     "static/css/main.2744dd5a.css",
-    "static/js/main.1623b782.js"
+    "static/js/main.ad6657b6.js"
   ]
 }
