@@ -1,5 +1,4 @@
 export  const typeData = {
-    pokeball: { icon: 'pokeball', color: '#5698D1' },
     normal: { icon: 'normal', color: '#A8A878' },
     fire: { icon: 'fire', color: '#F08030' },
     water: { icon: 'water', color: '#6890F0' },
