@@ -308,8 +308,7 @@
   }
 
   .modal-image {
-    width: 260px;
-    height: 200px;
+    height: 300px;
   }
 
   .name h2 {
@@ -345,6 +344,7 @@
     height: 500px;
     padding: 0;
     margin-left: 5%;
+    margin-right: 2px;
     margin-top: 10%;
     border-radius: 20px;
     display: inline-table;
@@ -361,8 +361,6 @@
     margin-bottom: 5px;
     display: flex;
     margin-left: 10px;
-    margin-left: 13px;
-    margin-right: 13px;
     font-size: 8px;
     color: #ddd;
   }
@@ -382,7 +380,7 @@
   }
 
   .description {
-    width: 100%;
+    width: 90%;
     height: 35px;
     display: flex;
     align-items: center;
@@ -392,13 +390,12 @@
   }
   
   .stats {
-    width: 100%;
+    width: 90%;
     display: inline-flex;
-    margin-top: 5px;
   }
 
   .info-stats {
-    width: 100%;
+    width: 70%;
   }
 
   .info-stats table {
@@ -415,7 +412,7 @@
   }
 
   .typeIcon {
-    flex: 0 0 calc(80% - 5px);
+    flex: 0 0 calc(10% - 2px);
   }
 
 }
