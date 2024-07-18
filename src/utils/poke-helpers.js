@@ -23,7 +23,6 @@ export const formatPokemon = (pokemon) => {
     const formatTypes = types.map(({type}) => type);
     const pokeImg = sprites.other.dream_world.front_default || sprites.other['official-artwork'].front_default;
 
-
     return {
         ...pokemon,
         paddedId,
@@ -70,4 +69,3 @@ export const formatStats = (stats) => {
         { name: 'total', value: total }
     ];
 }
-
