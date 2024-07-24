@@ -4,8 +4,15 @@
   text-align: center;
 }
 
-.dashboard h1 {
+.dashboard h1  {
   color: #00301de5;
+  font-family: 'Pokemon Solid', sans-serif;
+  animation: blurIn 0.5s ease-in-out;
+  filter: drop-shadow(6px 20px 3px rgba(0, 0, 0, 0.5));
+}
+
+.dashboard h2{
+  margin-top: -20px;
   font-family: 'Pokemon Solid', sans-serif;
   animation: blurIn 0.5s ease-in-out;
   filter: drop-shadow(6px 20px 3px rgba(0, 0, 0, 0.5));
