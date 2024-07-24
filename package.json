@@ -20,6 +20,7 @@
     "react-paginate": "^8.2.0",
     "react-query": "^3.39.3",
     "react-scripts": "5.0.1",
+    "scrollreveal": "^4.0.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

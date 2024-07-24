@@ -4,25 +4,36 @@ import { usePokemonModal } from "../context/pokeModalProv";
 import * as Dialog from "@radix-ui/react-dialog";
 import DataRow from "./dataRow";
 import { useEvolutionChain } from "../../hooks/useEvolutionChain";
-import { formatStats, getTypeIcon } from "../../utils/poke-helpers";
+import { formatStats, getTypeIcon, getPokemonWeaknesses } from "../../utils/poke-helpers";
 import "../styles/modal.css";
 import Loader from "./loader";
 
 const PokemonModal = () => {
   const { isModalOpen, closeModal, currentPokemon } = usePokemonModal();
   const [pokemonName, setPokemonName] = useState("");
-
-  // Hook para obtener la cadena evolutiva, llamado siempre
+  const [weakness, setWeakness] = useState([]);
   const { evolutionChain, loading, error } = useEvolutionChain(pokemonName);
 
-  // Efecto para actualizar el nombre del Pokémon cuando `currentPokemon` cambia
   useEffect(() => {
     if (currentPokemon) {
       setPokemonName(currentPokemon.name);
     }
   }, [currentPokemon]);
 
-  // Si no hay `currentPokemon`, no renderizar nada
+  useEffect(() => {
+    if (currentPokemon) {
+      const fetchWeaknesses = async () => {
+        try {
+          const weaknesses = await getPokemonWeaknesses(currentPokemon.name);
+          setWeakness(weaknesses);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      fetchWeaknesses();
+    }
+  }, [currentPokemon]);
+
   if (!currentPokemon) {
     return null;
   }
@@ -45,13 +56,23 @@ const PokemonModal = () => {
             }, ${
               currentPokemon.types[1]
                 ? typeData[currentPokemon.types[1].name].color
-                : "#fff"
+                : typeData[currentPokemon.types[0].name].color
             })`,
           }}
         >
           <div className="cardInfo">
             <span className="name">
               N°{currentPokemon.paddedId} {currentPokemon.name}
+            </span>
+            <span className="icon">
+              {currentPokemon.types.map(({ name }) => {
+                const typeImg = getTypeIcon(name);
+                return (
+                  <div key={name} className={name}>
+                    <img src={typeImg} alt={name} />
+                  </div>
+                );
+              })}
             </span>
 
             <img
@@ -63,13 +84,13 @@ const PokemonModal = () => {
             <div className="description">
               <h3>Altura: {currentPokemon.height}</h3>
               <h3>Peso: {currentPokemon.weight}</h3>
-              <h3>Tipos:</h3>
-              <span className="icon">
-                {currentPokemon.types.map(({ name }) => {
-                  const typeImg = getTypeIcon(name);
+              <span className="weaknes">
+                <h3>Debilidades</h3>
+                {weakness.map((weak) => {
+                  const typeImg = getTypeIcon(weak);
                   return (
-                    <div key={name} className={name}>
-                      <img src={typeImg} alt={name} />
+                    <div key={weak}>
+                      <img src={typeImg} alt={weak} />
                     </div>
                   );
                 })}
@@ -88,7 +109,7 @@ const PokemonModal = () => {
                           category={name}
                           value={value}
                           max={max}
-                          type={currentPokemon.types[0].name}
+                          types={currentPokemon.types}
                         />
                       );
                     })}
@@ -99,22 +120,26 @@ const PokemonModal = () => {
                 <h3>Forms</h3>
                 <div className="transforms-images">
                   {loading ? (
-                    <Loader className="loader"/>
+                    <Loader className="loader" />
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : evolutionChain.length > 0 ? (
-                    evolutionChain.map((evolution, index) => (
-                      <div key={index}>
-                        <h5>#{evolution.paddedId} {evolution.name}</h5>
-                        <img
-                          src={evolution.imgSrc}
-                          alt={evolution.name} // Asegúrate de que 'evolution.name' sea una propiedad válida para el atributo alt
-                          className="transforms-image"
-                        />
-                      </div>
-                    ))
+                    <div className="grid-container">
+                      {evolutionChain.map((evolution, index) => (
+                        <div key={index} className="grid-item">
+                          <h3>
+                            #{evolution.paddedId} {evolution.name}
+                          </h3>
+                          <img
+                            src={evolution.imgSrc}
+                            alt={evolution.name}
+                            className="transforms-image"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   ) : (
-                    <p>No evolutions found.</p> // Opcional: Mensaje para el caso en que no haya evoluciones
+                    <p>No evolutions found.</p>
                   )}
                 </div>
               </div>

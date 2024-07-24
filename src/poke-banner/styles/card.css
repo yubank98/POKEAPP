@@ -70,7 +70,7 @@
   margin-top: -35%;
   margin-bottom: 20px;
   animation: blurIn 0.5s ease-in-out;
-
+  filter: drop-shadow(6px 20px 3px rgba(0, 0, 0, 0.5));
 }
 
 @keyframes blurIn {

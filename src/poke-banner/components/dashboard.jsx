@@ -9,7 +9,7 @@ function Dashboard({ type }) {
 
   return (
     <div className="dashboard">
-      <h2>Lista de Pokémon</h2>
+      <h1>P O K E M O N S</h1>
       <div key="pokemon-list" className="dashboard-widgets">
         {pokemons.map((pokemon) => (
           <Card key={pokemon.id} pokemon={pokemon} />

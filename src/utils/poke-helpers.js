@@ -69,3 +69,43 @@ export const formatStats = (stats) => {
         { name: 'total', value: total }
     ];
 }
+
+export const getPokemonWeaknesses = async (pokemonName) => {
+    try {
+        const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        if (!pokemonResponse.ok) {
+            throw new Error(`Error fetching Pokémon data: ${pokemonResponse.statusText}`);
+        }
+        const pokemonData = await pokemonResponse.json();
+        const typeUrls = pokemonData.types.map(typeInfo => typeInfo.type.url);
+
+        const typeResponses = await Promise.all(typeUrls.map(url => fetch(url)));
+        const typesData = await Promise.all(typeResponses.map(res => {
+            if (!res.ok) {
+                throw new Error(`Error fetching type data: ${res.statusText}`);
+            }
+            return res.json();
+        }));
+
+        const weaknesses = calculateWeaknesses(typesData);
+        return weaknesses;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+};
+
+const calculateWeaknesses = (typesData) => {
+    const damageRelations = typesData.flatMap(typeData => typeData.damage_relations);
+    const doubleDamageFrom = new Set(damageRelations.flatMap(relations => relations.double_damage_from.map(type => type.name)));
+    const halfDamageFrom = new Set(damageRelations.flatMap(relations => relations.half_damage_from.map(type => type.name)));
+    const noDamageFrom = new Set(damageRelations.flatMap(relations => relations.no_damage_from.map(type => type.name)));
+
+    doubleDamageFrom.forEach(type => {
+        if (halfDamageFrom.has(type) || noDamageFrom.has(type)) {
+            doubleDamageFrom.delete(type);
+        }
+    });
+
+    return Array.from(doubleDamageFrom);
+};

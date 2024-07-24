@@ -15,18 +15,11 @@ export const useEvolutionChain = (pokemonName) => {
             setError(null);
 
             try {
-                // Obtener los datos del Pokémon
                 const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}/`);
                 const speciesData = await responseSpecies.json();
-
-                // Obtener la URL de la cadena evolutiva
                 const evolutionChainUrl = speciesData.evolution_chain.url;
-
-                // Obtener la cadena evolutiva
                 const responseEvolution = await fetch(evolutionChainUrl);
                 const evolutionData = await responseEvolution.json();
-
-                // Función recursiva para recorrer la cadena evolutiva y omitir una evolución
                 async function extractEvolutions(chain, omit) {
                     const evolutions = [];
 
@@ -43,8 +36,6 @@ export const useEvolutionChain = (pokemonName) => {
                     await traverseEvolution(chain);
                     return evolutions;
                 }
-
-                // Extraer las evoluciones, omitiendo la evolución especificada
                 const chain = await extractEvolutions(evolutionData.chain, pokemonName);
                 setEvolutionChain(chain);
             } catch (error) {
@@ -53,11 +44,8 @@ export const useEvolutionChain = (pokemonName) => {
                 setLoading(false);
             }
         };
-
         fetchEvolutionChain();
     }, [pokemonName]);
-    console.log(evolutionChain);
-
     return { evolutionChain, loading, error };
 };
 
