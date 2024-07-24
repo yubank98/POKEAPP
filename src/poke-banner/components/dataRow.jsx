@@ -3,7 +3,6 @@ import "../styles/modal.css";
 import { typeData } from "../../utils/collectionTypes";
 
 const DataRow = ({ category, value, max, types }) => {
-  console.log(types);
   const typeColor = types[1] ? typeData[types[1].name].color : "#fff";
 
   return (

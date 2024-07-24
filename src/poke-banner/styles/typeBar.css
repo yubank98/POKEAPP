@@ -50,19 +50,18 @@
 }
 
 .typeName {
-  font-family: 'Pokemon Solid', sans-serif;
+  font-family: "Pokemon Solid", sans-serif;
   position: absolute;
-  top: -30px; /* Ajusta este valor según sea necesario */
+  top: -15px; /* Ajusta este valor según sea necesario */
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(250, 249, 249, 0);
   color: rgb(0, 0, 0);
   padding: 2px 5px;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 7px;
   white-space: nowrap;
 }
-
 
 .types-Bar .normal {
   background: #a8a878;
