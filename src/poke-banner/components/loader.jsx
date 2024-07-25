@@ -1,11 +1,11 @@
 import React from "react";
+import "../styles/loader.css";
 
 const Loader = () => {
-    return (
-        <div className="chargeImg">
-        <img src="/images/pikachiball.gif" alt="Cargando..." />
-        <h4>Cargando...</h4>
-        </div>
-    );
-    }
+  return (
+    <div className="loader">
+          <img src="/images/pokeball.svg" alt="Cargando..." />
+    </div>
+  );
+};
 export default Loader;

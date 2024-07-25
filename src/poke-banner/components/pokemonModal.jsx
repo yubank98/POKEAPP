@@ -120,7 +120,7 @@ const PokemonModal = () => {
                 <h3>Forms</h3>
                 <div className="transforms-images">
                   {loading ? (
-                    <Loader className="loader" />
+                    <Loader/>
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : evolutionChain.length > 0 ? (

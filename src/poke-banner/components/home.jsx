@@ -9,7 +9,7 @@ import { PokemonModalProvider } from "../context/pokeModalProv";
 import Loader from "./loader";
 
 function Home() {
-  const [type, setType] = useState("fire");
+  const [type, setType] = useState("water");
   return (
     <PokemonModalProvider>
       <PokemonModal />
@@ -19,7 +19,6 @@ function Home() {
       <Suspense fallback={<Loader />}>
         <Dashboard type={type} />
       </Suspense>
-
       <Footer />
     </PokemonModalProvider>
   );
