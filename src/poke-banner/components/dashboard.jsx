@@ -6,7 +6,7 @@ import "../styles/dashboard.css";
 import Loader from "./loader";
 
 function Dashboard({ type }) {
-  const { data: pokemons = [], isLoading, isError, error } = usePokemon(type);
+  const { data: pokemons = [], isLoading, isError } = usePokemon(type);
 
   if (isLoading)
     return (
@@ -14,7 +14,7 @@ function Dashboard({ type }) {
         <Loader />
       </div>
     );
-  if (!isError)
+  if (isError)
     return (
       <div>
         <img className="error-images" src="/images/psyduck.png" alt="error" />
