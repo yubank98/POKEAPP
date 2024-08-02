@@ -80,7 +80,6 @@ const PokemonModal = () => {
               alt={`${currentPokemon.name}`}
               className="modal-image"
             />
-
             <div className="description">
               <h3>Altura: {currentPokemon.height}</h3>
               <h3>Peso: {currentPokemon.weight}</h3>
