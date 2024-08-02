@@ -3,11 +3,12 @@ import { apiFetch } from '../utils/pokeapi';
 import { formatPokemon } from '../utils/poke-helpers';
 
 export const usePokemon = (type) => {
-    const { data, isLoading, isError, error } = useQuery({
+    const { data, isLoading, isError } = useQuery({
         queryKey: ['pokemons', type],
         queryFn: async () => {
             try {
-                const { pokemon: pokelist } = await apiFetch(`/type/${type}`);
+                const response = await apiFetch(`/type/${type}`);
+                const { pokemon: pokelist } = response;
 
                 // Verifica que pokelist sea un array antes de mapear
                 if (!Array.isArray(pokelist)) {
@@ -35,7 +36,7 @@ export const usePokemon = (type) => {
                             return formatPokemon(data);
                         } catch (fetchError) {
                             console.error(`Error al obtener Pokémon desde ${pokemon.url}:`, fetchError.message);
-                            return null; // O puedes manejar este error de otra manera
+                            return null; // Manejo de errores: podrías querer manejar esto de manera diferente
                         }
                     })
                 );
@@ -49,5 +50,6 @@ export const usePokemon = (type) => {
         }
     });
 
-    return { data, isLoading, isError, error };
+    return { data, isLoading, isError };
 };
+

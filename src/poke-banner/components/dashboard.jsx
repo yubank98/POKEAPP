@@ -1,26 +1,21 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Card } from "./card";
 import { usePokemon } from "../../hooks/usePokemons";
-
 import "../styles/dashboard.css";
 import Loader from "./loader";
 
-function Dashboard({ type }) {
-  const { data: pokemons = [], isLoading, isError } = usePokemon(type);
+function DashboardContent({ type }) {
+  const { data: pokemons = [], isError } = usePokemon(type);
 
-  if (isLoading)
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  if (isError)
+ 
+  if (isError) {
     return (
       <div>
         <img className="error-images" src="/images/psyduck.png" alt="error" />
         <h1>Tenemos Problemas con el servidor, recargue la pagina</h1>
       </div>
     );
+  }
 
   return (
     <div className="dashboard">
@@ -33,6 +28,14 @@ function Dashboard({ type }) {
         )}
       </div>
     </div>
+  );
+}
+
+function Dashboard({ type }) {
+  return (
+    <Suspense fallback={<Loader/>}>
+      <DashboardContent type={type} />
+    </Suspense>
   );
 }
 
