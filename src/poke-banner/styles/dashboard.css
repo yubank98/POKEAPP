@@ -4,16 +4,22 @@
   text-align: center;
 }
 
-.dashboard h1  {
+.error-images {
+  margin-top: 10%;
+  width: 200px;
+  height: auto;
+}
+
+.dashboard h1 {
   color: #00301de5;
-  font-family: 'Pokemon Solid', sans-serif;
+  font-family: "Pokemon Solid", sans-serif;
   animation: blurIn 0.5s ease-in-out;
   filter: drop-shadow(6px 20px 3px rgba(0, 0, 0, 0.5));
 }
 
-.dashboard h2{
+.dashboard h2 {
   margin-top: -20px;
-  font-family: 'Pokemon Solid', sans-serif;
+  font-family: "Pokemon Solid", sans-serif;
   animation: blurIn 0.5s ease-in-out;
   filter: drop-shadow(6px 20px 3px rgba(0, 0, 0, 0.5));
 }
@@ -63,11 +69,9 @@
   width: 15%;
 }
 
-
 /*# styles responsive  */
 
 @media (max-width: 720px) {
- 
   .dashboard-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -75,12 +79,9 @@
     margin-left: 10px;
     margin-right: 10px;
   }
-
 }
 
-
 @media (max-width: 480px) {
-
   .dashboard {
     gap: 5px;
     margin-left: 5px;
@@ -94,8 +95,4 @@
     margin-left: 10px;
     margin-right: 20px;
   }
-
-  
-
-  
 }
