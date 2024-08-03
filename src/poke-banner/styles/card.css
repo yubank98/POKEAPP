@@ -35,27 +35,38 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -1;
 }
 
-.pokeCard-bg::after{
+.pokeCard-bg::after {
   content: '';
   position: absolute;
-  top: 40%;
-  width: 100%;
-  height: 80%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.432);
+  top: 60%; 
+  left: 50%; 
+  width: 150%; 
+  height: 150%; 
+  transform: translate(-50%, -50%); 
+  background: rgba(255, 255, 255, 0.568);
   mask: url("/public/images/Icons-type/pokeball-transparent.svg");
   mask-repeat: no-repeat;
-  mask-size: cover;
+  mask-size: cover; 
   -webkit-mask: url("/public/images/Icons-type/pokeball-transparent.svg");
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: cover;
+  -webkit-mask-size: contain; 
+  transform-origin: center; 
+  animation: rotate 20s  infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .pokeCard:hover {
-  transform: translateY(-10px);
+  transform: translateY(-20px);
   transition: all 0.3s ease;
 }
 
@@ -105,7 +116,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  position: relative;
 }
 
 .icon {
@@ -209,10 +220,6 @@
   background: linear-gradient(to top, #fff, #EE99AC);
 }
 
-.normal, .fire, .water, .electric, .grass, .ice, .fighting, .poison, .ground, .flying, .psychic, .bug, .rock, .ghost, .dragon, .dark, .steel, .fairy {
-  z-index: 0;
-}
-
 /** Tipos de pokemon color**/
 
 .cardIcon .pokeball { background: #5698D1; }
@@ -276,6 +283,7 @@
 
 @media screen and (max-width: 480px) {
   .pokeCard {
+    margin-top: 30px;
     width: auto;
     height: 150px;
     padding: 3px;
@@ -283,7 +291,7 @@
   }
 
   .pokeCard-image {
-    max-height: 50%;
+    max-height: 30%;
     max-width: 50%;
     margin-top: -10%;
   }

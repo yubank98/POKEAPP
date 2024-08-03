@@ -6,8 +6,7 @@ html, body {
   overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
 
-#root, .App { /* Asegúrate de que estos selectores coinciden con el id o la clase de tu contenedor principal */
-  min-height: 100%;
+#root, .App { 
   width: 100%;
 }
 

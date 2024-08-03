@@ -14,33 +14,33 @@ function Navbar({ type }) {
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
+    navRef.current.classList.toggle(type);
   };
 
   return (
     <header className={`header ${type}`}>
       <div className="logo">
         <img src="/images/pikachiball.gif" alt="" />
-        <h1 >PokeDex</h1>
+        <h1>PokeDex</h1>
       </div>
       <nav ref={navRef}>
         <a href="https://github.com/yubank98/POKEAPP">
-          <FaCode /> Repo
-        </a>
-        <a href="https://myubnkdev.netlify.app/">
-          <FaUserAstronaut /> Portfolio
+          <FaCode className="icon-code" /> Repo
         </a>
         <a href="https://www.linkedin.com/in/michael-yubank-5b616b192/">
-          <FaLinkedinIn /> Linkedin
+          <FaLinkedinIn className="icon-linkedin" /> Linkedin
         </a>
         <a href="https://github.com/yubank98">
-          <FaGithubAlt /> GitHub
+          <FaGithubAlt className="icon-github" /> GitHub
         </a>
         <a href="https://github.com/yubank98">
-          <SiPokemon />
-          PokeApi
+          <SiPokemon className="icon-pokemon" /> PokeApi
+        </a>
+        <a href="https://myubnkdev.netlify.app/">
+          <FaUserAstronaut className="icon-user" /> About me
         </a>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
+          <FaTimes className="icon-close" />
         </button>
       </nav>
       <button className="nav-btn" onClick={showNavbar}>

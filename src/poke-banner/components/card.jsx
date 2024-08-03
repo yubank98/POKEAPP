@@ -14,8 +14,9 @@ export const Card = ({
       className={`pokeCard ${types[0].name}`}
     >
       <div className="pokeCard-bg"></div>
-      <img src={imgSrc} alt={name} className="pokeCard-image" />
+      
       <div className="pokemon-info">
+        <img src={imgSrc} alt={name} className="pokeCard-image" />
         <span className="pokemon-number">{"#" + paddedId + " "}</span>
         <span className="pokemon-name">{name}</span>
         <span className="cardIcon">

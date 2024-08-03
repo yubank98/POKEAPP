@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/banner.css'; // Importa tu archivo de estilos CSS
+import React, { useState, useEffect } from "react";
+import "../styles/banner.css";
 
 const images = [
-  '/images/img-1.avif',
-  '/images/img-2.avif',
-  '/images/img-3.avif',
-  '/images/img-4.jpg',
-  '/images/img-5.jpg',
+  "/images/img-1.avif",
+  "/images/img-2.avif",
+  "/images/img-3.avif",
+  "/images/img-4.jpg",
+  "/images/img-5.jpg",
 ];
-
 
 function Banner() {
   const [currentIndex, setCurrentIndex] = useState(0);
