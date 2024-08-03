@@ -95,6 +95,9 @@
 }
 
 .name {
+  top: 5px;
+  margin-left: 0px;
+  letter-spacing: 0.2rem;
   position: absolute;
   margin-top: -10px;
   left: 20px;
@@ -170,6 +173,7 @@
   margin-left: 10px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.596);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
 }
 
 .info-stats {
@@ -193,6 +197,14 @@
 .transforms {
   width: 250px;
   height: 250px;
+}
+
+.stats h1, .transforms h1{
+  margin-top: -7px;
+  margin-left: 10px;
+  font-size: 15px;
+  font-family: "Pokemon Solid", sans-serif;
+  letter-spacing: 0.2rem;
 }
 
 .transforms-images {
@@ -294,12 +306,6 @@
     filter: blur(0);
     opacity: 1;
   }
-}
-
-.name {
-  position: absolute;
-  top: 5px;
-  margin-left: 0px;
 }
 
 .cardInfo {
@@ -500,6 +506,10 @@
 }
 
 @media screen and (max-width: 430px) {
+  .cardInfo{
+    width: 94%;
+  }
+
   .modal {
     width: 300px;
     height: 500px;
@@ -516,12 +526,20 @@
     align-items: center;
     padding: 2px;
   }
-
+  
   .modal h3 {
     margin-left: 10px;
     font-size: 8px;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+
+  .name{
+    width: 100%;
+    margin-top: 5px;
+    max-height: 20px;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
   }
 
   .info-stats {

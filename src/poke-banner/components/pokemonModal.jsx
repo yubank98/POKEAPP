@@ -61,9 +61,9 @@ const PokemonModal = () => {
           }}
         >
           <div className="cardInfo">
-            <span className="name">
+            <h1 className="name">
               N°{currentPokemon.paddedId} {currentPokemon.name}
-            </span>
+            </h1>
             <span className="icon">
               {currentPokemon.types.map(({ name }) => {
                 const typeImg = getTypeIcon(name);
@@ -96,7 +96,7 @@ const PokemonModal = () => {
               </span>
             </div>
             <div className="stats">
-              <h3>Stats</h3>
+              <h1>Stats</h1>
               <div className="info-stats">
                 <table>
                   <tbody>
@@ -116,7 +116,7 @@ const PokemonModal = () => {
                 </table>
               </div>
               <div className="transforms">
-                <h3>Forms</h3>
+                <h1>Forms</h1>
                 <div className="transforms-images">
                   {loading ? (
                     <Loader/>

@@ -19,7 +19,8 @@ function DashboardContent({ type }) {
 
   return (
     <div className="dashboard">
-      <h1>P O K E M O N S</h1>
+      <h1>POKEMONS</h1>
+      <h2>{type}</h2>
       <div key="pokemon-list" className="dashboard-widgets">
         {pokemons.length === 0 ? (
           <div>No Pokémon found</div>

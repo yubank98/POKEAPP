@@ -6,13 +6,14 @@ import Footer from "./footer";
 import TypeBar from "./typesBar";
 import PokemonModal from "./pokemonModal";
 import { PokemonModalProvider } from "../context/pokeModalProv";
+import { getRandomType } from "../../utils/collectionTypes";
 
 function Home() {
-  const [type, setType] = useState("water");
+  const [type, setType] = useState(getRandomType());
   return (
     <PokemonModalProvider>
       <PokemonModal />
-      <NavBar />
+      <NavBar type={type}/>
       <Banner />
       <TypeBar toggleTypes={setType} />
       <Dashboard type={type} />
