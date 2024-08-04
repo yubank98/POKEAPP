@@ -1,4 +1,5 @@
 .overlay {
+  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +11,7 @@
 }
 
 .modal {
+  z-index: 3;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17,9 +19,8 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
-  max-width: auto;
-  max-height: auto;
-  overflow-y: auto;
+  max-width: 600px;
+  max-height: 900px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   animation: spinIn 0.8s ease;
 }
@@ -146,6 +147,22 @@
   margin-top: 30px;
   display: flex;
   gap: 2px;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .icon div {
@@ -182,7 +199,6 @@
 }
 
 .table-container {
-  box-shadow: 2px 2px 2px rgba(175, 175, 175, 0.418);
   max-width: 250px;
   height: 90%;
   margin-top: 20%;
@@ -227,6 +243,12 @@
   justify-content: left;
   align-items: flex-start;
   flex-direction: column;
+}
+
+.transforms-images p {
+  overflow: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .grid-container {
@@ -401,43 +423,64 @@
   background: #db4791;
 }
 
+.erro-image {
+  animation: blurIn 0.8s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 150px;
+  height: auto;
+  box-sizing: border-box;
+  margin-left: 10%;
+}
+
+.erro-image img {
+  margin: 12px;
+  max-width: 80%;
+  height: auto;
+}
+
+.erro-image h1 {
+  margin: 5;
+  max-width: 90%;
+  font-size: 0.9em;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+
 @media screen and (max-width: 768px) {
   .modal {
-    width: 300px;
-    height: 500px;
-    padding: 0;
+    max-width: 500px;
+    max-height: 600px;
     margin: 0;
     display: inline-table;
     top: 50%;
     left: 50%;
-    max-width: 100%;
-    max-height: 400px;
-    margin-right: 20%;
-    margin-top: 10%;
-    border-radius: 20px;
+    border-radius: px;
     align-items: center;
-    padding: 2px;
   }
 
-  .modal h3 {
-    margin-left: 10px;
-    font-size: 8px;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  }
-
-  .info-stats {
-    color: #000000;
-    width: 160px;
-    margin-bottom: 2px;
-    display: flex;
-    margin-left: 1px;
+  .name {
+    width: 100%;
+    margin-top: 5px;
+    max-height: 20px;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
   }
 
   .modal-image {
     width: 100%;
-    height: 200px;
+    max-height: 250px;
     margin-left: 1px;
+  }
+
+  .cardInfo {
+    max-width: 95%;
+    margin-left: 7px;
+    margin-right: 9px;
   }
 
   .description {
@@ -451,14 +494,34 @@
   }
 
   .stats {
-    margin-left: 1px;
-    width: 100%;
+    margin-left: 2px;
+    max-width: 300px;
+    max-height: 250px;
     display: inline-flex;
   }
 
+  .info-stats {
+    max-width: 150px;
+    display: flex;
+  }
+
   .info-stats table {
-    width: 100%;
-    margin-top: 20px;
+    max-width: 145px;
+    margin-top: 6px;
+    margin-left: 1px;
+    position: absolute;
+    margin-left: -70px;
+  }
+
+  .info-stats h1,
+  .transforms h1 {
+    max-width: 100%;
+    max-height: 10px;
+    margin-top: -5px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-family: "Pokemon Solid", sans-serif;
+    letter-spacing: 0.3rem;
   }
 
   .description h3,
@@ -469,8 +532,8 @@
   }
 
   .transforms {
-    width: 100%;
-    height: 250px;
+    max-width: 150px;
+    height: auto;
   }
 
   .transforms-images {
@@ -482,12 +545,12 @@
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 125px;
-    max-height: 250px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 150px;
+    max-height: 220px;
     overflow-y: auto;
-    margin-top: -5px;
-    margin-left: -10px;
+    margin-top: 5px;
+    margin-left: 2px;
   }
 
   .grid-item {
@@ -499,24 +562,21 @@
 
   .transforms-image {
     margin-top: 1px;
-    max-width: 50px;
+    max-width: 55px;
     max-height: 55px;
   }
 
   .weaknes {
-    align-items: center;
+    align-items: flex-start;
     margin-left: 10px;
-    margin-right: 10px;
-    right: 10px;
-    margin-top: -2px;
     display: flex;
-    gap: 4px;
+    gap: 1px;
   }
 
   .weaknes div > img {
-    width: 12px;
-    height: 12px;
-    filter: drop-shadow(3px 4px 2px rgba(0, 0, 0, 0.5));
+    width: 10px;
+    height: 8px;
+    filter: drop-shadow(3px 4px 2px rgba(0, 0, 0, 0.274));
   }
 }
 

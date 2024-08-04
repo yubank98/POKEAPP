@@ -13,8 +13,8 @@ function Home() {
   return (
     <PokemonModalProvider>
       <PokemonModal />
-      <NavBar type={type}/>
-      <Banner />
+      <NavBar type={type} />
+      <Banner type={type} />
       <TypeBar toggleTypes={setType} />
       <Dashboard type={type} />
       <Footer />

@@ -7,16 +7,26 @@ export const Card = ({
   pokemon,
   pokemon: { paddedId, name, types, imgSrc },
 }) => {
-  const {openModal} = usePokemonModal();
+  const { openModal } = usePokemonModal();
+  const fallbackimg = "/images/pokebolas.png";
+  const handleError = (e) => {
+    e.target.src = fallbackimg;
+  };
+
   return (
     <div
       onClick={() => openModal(pokemon)}
       className={`pokeCard ${types[0].name}`}
     >
       <div className="pokeCard-bg"></div>
-      
+
       <div className="pokemon-info">
-        <img src={imgSrc} alt={name} className="pokeCard-image" />
+        <img
+          src={imgSrc || fallbackimg}
+          alt={name || "pokemon sin imagen"}
+          onError={handleError}
+          className="pokeCard-image"
+        />
         <span className="pokemon-number">{"#" + paddedId + " "}</span>
         <span className="pokemon-name">{name}</span>
         <span className="cardIcon">

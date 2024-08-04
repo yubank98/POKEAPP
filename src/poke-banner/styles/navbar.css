@@ -136,6 +136,7 @@ header .fighting {
 
 header .poison {
   background: rgb(156, 70, 99);
+  z-index: -1;
 }
 
 header .ground {

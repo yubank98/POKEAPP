@@ -4,7 +4,11 @@ import { usePokemonModal } from "../context/pokeModalProv";
 import * as Dialog from "@radix-ui/react-dialog";
 import DataRow from "./dataRow";
 import { useEvolutionChain } from "../../hooks/useEvolutionChain";
-import { formatStats, getTypeIcon, getPokemonWeaknesses } from "../../utils/poke-helpers";
+import {
+  formatStats,
+  getTypeIcon,
+  getPokemonWeaknesses,
+} from "../../utils/poke-helpers";
 import "../styles/modal.css";
 import Loader from "./loader";
 
@@ -13,6 +17,7 @@ const PokemonModal = () => {
   const [pokemonName, setPokemonName] = useState("");
   const [weakness, setWeakness] = useState([]);
   const { evolutionChain, loading, error } = useEvolutionChain(pokemonName);
+  const fallbackimg = "/images/pokebolas.png";
 
   useEffect(() => {
     if (currentPokemon) {
@@ -39,6 +44,10 @@ const PokemonModal = () => {
   }
 
   const stats = formatStats(currentPokemon.stats);
+
+  const handleError = (e) => {
+    e.target.src = fallbackimg;
+  };
 
   return (
     <Dialog.Root
@@ -76,9 +85,10 @@ const PokemonModal = () => {
             </span>
 
             <img
-              src={`${currentPokemon.imgSrc}`}
-              alt={`${currentPokemon.name}`}
+              src={`${currentPokemon.imgSrc || fallbackimg} `}
+              alt={`${currentPokemon.name || "pokemon"}`}
               className="modal-image"
+              onError={handleError}
             />
             <div className="description">
               <h3>Altura: {currentPokemon.height}</h3>
@@ -123,7 +133,13 @@ const PokemonModal = () => {
                   {loading ? (
                     <Loader />
                   ) : error ? (
-                    <p>Error: {error.message}</p>
+                    <span className="erro-image">
+                      <img
+                        src="/images/pokeball-open.png"
+                        alt="no found data"
+                      />
+                      <h1>No data Found</h1>
+                    </span>
                   ) : evolutionChain.length > 0 ? (
                     <div className="grid-container">
                       {evolutionChain.map((evolution, index) => (
@@ -140,7 +156,13 @@ const PokemonModal = () => {
                       ))}
                     </div>
                   ) : (
-                    <p>No evolutions found.</p>
+                    <span className="erro-image">
+                      <img
+                        src="/images/pokeball-open.png"
+                        alt="no found data"
+                      />
+                      <h1>No Evolutions Found</h1>
+                    </span>
                   )}
                 </div>
               </div>
