@@ -45,31 +45,30 @@
 
 .range-container {
   position: relative;
-  width: 100%;
-  height: 5px;
+  width: 90%;
+  height: 10px;
   background-color: var(--max-color, gray);
-  border-radius: 5px;
+  border-radius: 4px;
   overflow: hidden;
   display: flex;
-  align-items: center;
 }
 
 .category,
 .stats-number {
-  padding: 0 5px;
-  font-size: 9px;
+  padding: 0 1px;
+  font-size: 12px;
 }
 
 .range-fill {
   height: 100%;
   background-color: var(--value-color, blue);
   width: var(--percentage, 0%);
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 
 .range-slide {
   width: 100%;
-  padding: 2px;
+  padding: 8px;
 }
 
 .range-slide-fill {
@@ -80,8 +79,8 @@
 }
 
 .range-slide-fill::after {
-  width: 100%;
-  border-spacing: 0 1.1vh;
+  width: 90%;
+  border-spacing: 0 1vh;
 }
 
 .range-slide-fill::before {
@@ -89,9 +88,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  height: auto;
   width: 100%;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 .name {
@@ -167,7 +166,6 @@
   display: flex;
   overflow: hidden;
   margin-bottom: 10px;
-  bottom: 10px;
   width: 500px;
   height: 300px;
   margin-left: 10px;
@@ -179,19 +177,30 @@
 .info-stats {
   width: 250px;
   height: 250px;
-  display: flex;
-  margin-top: 30px;
-  margin-left: -30px;
-  font-size: 9px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.info-stats table {
+.table-container {
+  box-shadow: 2px 2px 2px rgba(175, 175, 175, 0.418);
+  max-width: 250px;
+  height: 90%;
+  margin-top: 20%;
+  padding-left: 10px;
+  justify-content: center;
+}
+
+.table-container .table {
+  width: 200px;
+  height: auto;
+}
+
+.table-container .table th,
+.table-container .table td {
+  padding: 20px;
+}
+
+.table-container .table tr {
   width: 90%;
-  border-collapse: collapse;
-  margin-top: 5px;
-  margin-bottom: 6px;
+  height: 10px;
 }
 
 .transforms {
@@ -199,8 +208,11 @@
   height: 250px;
 }
 
-.stats h1, .transforms h1{
-  margin-top: -7px;
+.info-stats h1,
+.transforms h1 {
+  max-width: 250px;
+  max-height: 10px;
+  margin-top: 5px;
   margin-left: 10px;
   font-size: 15px;
   font-family: "Pokemon Solid", sans-serif;
@@ -208,6 +220,7 @@
 }
 
 .transforms-images {
+  margin-top: 10%;
   display: flex;
   justify-content: left;
   align-items: flex-start;
@@ -506,7 +519,7 @@
 }
 
 @media screen and (max-width: 430px) {
-  .cardInfo{
+  .cardInfo {
     width: 94%;
   }
 
@@ -516,7 +529,7 @@
     padding: 0;
     margin: 0;
     display: inline-table;
-    top: 50%;
+    top: 40%;
     left: 50%;
     max-width: 100%;
     max-height: 400px;
@@ -526,7 +539,7 @@
     align-items: center;
     padding: 2px;
   }
-  
+
   .modal h3 {
     margin-left: 10px;
     font-size: 8px;
@@ -534,20 +547,12 @@
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
 
-  .name{
+  .name {
     width: 100%;
     margin-top: 5px;
     max-height: 20px;
     font-size: 0.8rem;
     text-overflow: ellipsis;
-  }
-
-  .info-stats {
-    color: #000000;
-    width: 160px;
-    margin-bottom: 2px;
-    display: flex;
-    margin-left: 1px;
   }
 
   .modal-image {
@@ -569,12 +574,31 @@
   .stats {
     margin-left: 1px;
     width: 100%;
-    display: inline-flex;
+    height: 250px;
+  }
+
+  .info-stats {
+    color: #000000;
+    width: 160px;
+    margin-bottom: 2px;
+    display: flex;
+    margin-left: 1px;
+  }
+  .info-stats h1,
+  .transforms h1 {
+    max-width: 100%;
+    max-height: 10px;
+    margin-top: 2px;
+    margin-left: 10px;
+    font-size: 13px;
+    font-family: "Pokemon Solid", sans-serif;
+    letter-spacing: 0.3rem;
   }
 
   .info-stats table {
-    width: 100%;
-    margin-top: 20px;
+    max-width: 140px;
+    margin-top: 6px;
+    margin-left: -60px;
   }
 
   .description h3,
@@ -585,7 +609,7 @@
   }
 
   .transforms {
-    width: 100%;
+    max-width: 140px;
     height: 250px;
   }
 
@@ -598,12 +622,12 @@
 
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    width: 125px;
-    max-height: 250px;
+    grid-template-columns: repeat(2, 1fr);
+    width: 140px;
+    max-height: 210px;
     overflow-y: auto;
-    margin-top: -5px;
-    margin-left: -10px;
+    margin-top: 5px;
+    margin-left: auto;
   }
 
   .grid-item {
@@ -616,6 +640,6 @@
   .transforms-image {
     margin-top: 1px;
     max-width: 50px;
-    max-height: 55px;
+    max-height: auto;
   }
 }

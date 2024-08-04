@@ -286,12 +286,12 @@
     margin-top: 30px;
     width: auto;
     height: 150px;
-    padding: 3px;
     font-size: 12px;
   }
 
   .pokeCard-image {
     max-height: 30%;
+    margin-left: -20px;
     max-width: 50%;
     margin-top: -10%;
   }
@@ -303,12 +303,12 @@
 
   .pokemon-info > span {
     font-size: 0.8rem;
-    padding: 2px;
+    padding: 1px;
   }
 
   .pokemon-number {
-    font-size: 17px;
-    
+    font-size: 1rem;
+    margin-left: -19px;
   }
   
   .pokemon-name {

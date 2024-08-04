@@ -33,7 +33,7 @@ function Navbar({ type }) {
         <a href="https://github.com/yubank98">
           <FaGithubAlt className="icon-github" /> GitHub
         </a>
-        <a href="https://github.com/yubank98">
+        <a href="https://pokeapi.co/">
           <SiPokemon className="icon-pokemon" /> PokeApi
         </a>
         <a href="https://myubnkdev.netlify.app/">

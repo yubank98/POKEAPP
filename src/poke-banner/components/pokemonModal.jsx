@@ -96,30 +96,32 @@ const PokemonModal = () => {
               </span>
             </div>
             <div className="stats">
-              <h1>Stats</h1>
               <div className="info-stats">
-                <table>
-                  <tbody>
-                    {stats.map((stat) => {
-                      const { name, value, max } = stat;
-                      return (
-                        <DataRow
-                          key={name}
-                          category={name}
-                          value={value}
-                          max={max}
-                          types={currentPokemon.types}
-                        />
-                      );
-                    })}
-                  </tbody>
-                </table>
+                <h1>Stats</h1>
+                <div className="table-container">
+                  <table>
+                    <tbody>
+                      {stats.map((stat) => {
+                        const { name, value, max } = stat;
+                        return (
+                          <DataRow
+                            key={name}
+                            category={name}
+                            value={value}
+                            max={max}
+                            types={currentPokemon.types}
+                          />
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div className="transforms">
                 <h1>Forms</h1>
                 <div className="transforms-images">
                   {loading ? (
-                    <Loader/>
+                    <Loader />
                   ) : error ? (
                     <p>Error: {error.message}</p>
                   ) : evolutionChain.length > 0 ? (
